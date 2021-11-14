@@ -24,7 +24,6 @@ export default new Vuex.Store({
       state.search = payload;
     },
     SET_DAILY_RESULTS(state, payload) {
-      console.log(payload)
       state.dailyValues = payload;
     },
     SET_WEEKLY_RESULTS(state, payload) {
@@ -55,7 +54,6 @@ export default new Vuex.Store({
     },
 
     getDailyValues({ state, commit }, payload) {
-      console.log(payload)
       axios
         .get(`${state.apiURL}`, {
           headers: { ...state.headers },
@@ -115,7 +113,6 @@ export default new Vuex.Store({
 
     //33 keys for each time zone
     getDailyResultsKeys(state){
-      console.log(state.dailyValues)
       return Object.keys(state.dailyValues).slice(0,33);
     },
     getWeeklyResultsKeys(state){

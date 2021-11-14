@@ -5,12 +5,10 @@
         <v-col>
           <div class="alert alert-primary text-center" role="alert">
             Data is ready
-            <br>
+            <br />
             You must press the buttons in order to see the chart.
           </div>
-          <h1 class="text-center">
-            
-          </h1>
+          <h1 class="text-center"></h1>
           <div class="d-flex flex-row justify-content-around">
             <button
               class="btn btn-warning"
@@ -63,17 +61,12 @@ export default {
 
   mounted() {
     if (this.$route.params.symbol) {
-      console.log(this.$route.params.symbol);
-
-      this.getDailyValues(this.$route.params.symbol);
-      console.log(this.getDailyResultsKeys);
-
-      this.dates = this.getDailyResultsKeys;
-
-      this.result = this.getDailyResultsValues;
-      this.moment = this.dailyValues;
-      this.designChart();
-      // });
+      this.getDailyValues(this.$route.params.symbol).then(() => {
+        this.dates = this.getDailyResultsKeys;
+        this.result = this.getDailyResultsValues;
+        this.moment = this.dailyValues;
+        this.designChart();
+      });
     }
   },
 
